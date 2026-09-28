@@ -1,0 +1,993 @@
+/* =========================================================
+   AMOS EYAL — PORTFOLIO
+   ========================================================= */
+
+
+/* =========================================================
+   DESIGN SYSTEM
+   ========================================================= */
+
+:root {
+  --background: #f4f1ea;
+  --surface: #ebe6dc;
+  --text: #252522;
+  --muted: #6c675f;
+  --accent: #8c6847;
+  --accent-dark: #6f5037;
+  --rule: #cbc4b8;
+
+  --max-width: 1180px;
+}
+
+
+/* =========================================================
+   RESET
+   ========================================================= */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  background: var(--background);
+  color: var(--text);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+
+  overflow-x: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+
+/* =========================================================
+   SHARED LAYOUT
+   ========================================================= */
+
+.site-header,
+main,
+.site-footer {
+  width: min(calc(100% - 48px), var(--max-width));
+  margin-inline: auto;
+}
+
+/*
+ * Every major section receives identical vertical spacing.
+ * Borders are applied only BETWEEN adjacent sections.
+ */
+
+.section {
+  padding: 72px 0;
+}
+
+.section + .section {
+  border-top: 1px solid var(--rule);
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+.site-header {
+  position: relative;
+  z-index: 10;
+
+  padding: 28px 0 20px;
+
+  background: transparent;
+}
+
+.nav-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 20px;
+
+  border-bottom: 1px solid var(--rule);
+}
+
+.logo {
+  font-size: 1.15rem;
+  letter-spacing: 0.12em;
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+}
+
+.nav-links a {
+  color: var(--muted);
+
+  transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent-dark);
+}
+
+
+/* =========================================================
+   SHARED TYPOGRAPHIC LABELS
+   ========================================================= */
+
+.eyebrow,
+.section-label,
+.project-category {
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: var(--accent-dark);
+
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+
+/* =========================================================
+   HERO
+   ========================================================= */
+
+.hero {
+  position: relative;
+
+  min-height: 650px;
+
+  display: flex;
+  align-items: center;
+
+  overflow: visible;
+}
+
+
+/* ---------- Hero Copy ---------- */
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+
+  width: 58%;
+  max-width: 720px;
+
+  padding: 72px 0;
+}
+
+.hero .eyebrow {
+  margin-bottom: 24px;
+}
+
+.hero h1 {
+  max-width: 720px;
+
+  font-size: clamp(3rem, 5.3vw, 5rem);
+  font-weight: 400;
+  line-height: 1.02;
+  letter-spacing: -0.035em;
+}
+
+.hero-intro {
+  max-width: 600px;
+
+  margin-top: 28px;
+
+  color: #45433e;
+
+  font-size: 1.08rem;
+  line-height: 1.6;
+}
+
+
+/* ---------- Primary Button ---------- */
+
+.button {
+  display: inline-block;
+
+  margin-top: 30px;
+  padding: 13px 20px;
+
+  border: 1px solid #b9a48f;
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  color: var(--accent-dark);
+
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.button:hover {
+  background: var(--accent-dark);
+  color: var(--background);
+}
+
+
+/* ---------- Hero Artwork ---------- */
+
+.hero-visual {
+  position: absolute;
+
+  top: -108px;
+  bottom: 0;
+
+  left: 36%;
+
+  right: calc(
+    (100vw - min(calc(100vw - 48px), var(--max-width))) / -2
+  );
+
+  z-index: 1;
+
+  overflow: hidden;
+
+  pointer-events: none;
+}
+
+.hero-visual img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: none;
+
+  object-fit: cover;
+  object-position: center right;
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.08) 8%,
+    rgba(0, 0, 0, 0.35) 17%,
+    black 32%,
+    black 100%
+  );
+
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.08) 8%,
+    rgba(0, 0, 0, 0.35) 17%,
+    black 32%,
+    black 100%
+  );
+}
+
+
+/* =========================================================
+   SECTION HEADERS
+   ========================================================= */
+
+.section-header {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 32px;
+
+  margin-bottom: 20px;
+}
+
+.section-header h2 {
+  margin-top: 6px;
+
+  font-size: 2.2rem;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.section-count {
+  color: var(--accent-dark);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+}
+
+
+/* =========================================================
+   PROJECTS
+   ========================================================= */
+
+.project-row {
+  display: grid;
+
+  grid-template-columns:
+    70px
+    minmax(0, 1.25fr)
+    minmax(260px, 0.85fr);
+
+  gap: 30px;
+  align-items: center;
+
+  min-height: 260px;
+
+  padding: 28px 0;
+
+  border-top: 1px solid var(--rule);
+}
+
+/*
+ * No bottom border here.
+ * The next major section supplies the single section separator.
+ */
+
+.project-row:last-child {
+  border-bottom: none;
+}
+
+
+/* ---------- Project Number ---------- */
+
+.project-number {
+  align-self: start;
+
+  color: var(--accent);
+
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+
+/* ---------- Project Copy ---------- */
+
+.project-copy {
+  max-width: 620px;
+}
+
+.project-category {
+  margin-bottom: 8px;
+}
+
+.project-copy h3 {
+  margin-bottom: 12px;
+
+  font-size: clamp(1.7rem, 2.5vw, 2.35rem);
+  font-weight: 400;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+}
+
+.project-description {
+  max-width: 580px;
+
+  color: #494640;
+
+  font-size: 0.98rem;
+  line-height: 1.55;
+}
+
+.project-tools {
+  margin-top: 12px;
+
+  color: var(--muted);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+
+/* ---------- Project Links ---------- */
+
+.project-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+
+  margin-top: 20px;
+}
+
+.project-links a {
+  color: var(--accent-dark);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.project-links a:hover {
+  color: var(--text);
+}
+
+
+/* =========================================================
+   PROJECT VISUALS
+   ========================================================= */
+
+.project-visual {
+  position: relative;
+
+  width: 100%;
+  aspect-ratio: 1.85 / 1;
+
+  background: var(--background);
+
+  overflow: hidden;
+}
+
+.project-visual img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  max-width: none;
+
+  object-fit: cover;
+  object-position: center;
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.08) 8%,
+    rgba(0, 0, 0, 0.35) 17%,
+    black 32%,
+    black 100%
+  );
+
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    rgba(0, 0, 0, 0.08) 8%,
+    rgba(0, 0, 0, 0.35) 17%,
+    black 32%,
+    black 100%
+  );
+}
+
+
+/* ---------- Project-Specific Positioning ---------- */
+
+.project-visual-airline img {
+  object-position: center;
+}
+
+.project-visual-cyber img {
+  object-position: center;
+}
+
+.project-visual-auth img {
+  object-position: center;
+}
+
+
+/* =========================================================
+   CAPABILITIES
+   ========================================================= */
+
+.capabilities-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  margin-top: 34px;
+
+  /*
+   * This is an internal component rule separating the
+   * Capabilities heading from the four-column grid.
+   *
+   * No bottom border is needed because the following
+   * section supplies the major section separator.
+   */
+
+  border-top: 1px solid var(--rule);
+}
+
+.capability {
+  min-height: 220px;
+
+  padding: 26px 24px;
+}
+
+.capability + .capability {
+  border-left: 1px solid var(--rule);
+}
+
+.capability-number {
+  margin-bottom: 32px;
+
+  color: var(--accent);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.capability h3 {
+  margin-bottom: 14px;
+
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.capability p:last-child {
+  color: var(--muted);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 0.82rem;
+  line-height: 1.75;
+}
+
+
+/* =========================================================
+   BACKGROUND
+   ========================================================= */
+
+.background-section {
+  display: grid;
+
+  grid-template-columns:
+    0.9fr
+    1.05fr
+    0.65fr;
+
+  gap: 64px;
+  align-items: end;
+}
+
+.background-heading {
+  align-self: start;
+}
+
+.background-heading h2 {
+  max-width: 480px;
+
+  margin-top: 12px;
+
+  font-size: clamp(2rem, 3.4vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.background-copy {
+  max-width: 560px;
+
+  color: #45433e;
+
+  font-size: 1.02rem;
+}
+
+.background-copy p + p {
+  margin-top: 20px;
+}
+
+
+/* ---------- Portrait ---------- */
+
+.portrait {
+  width: 100%;
+  max-width: 260px;
+
+  justify-self: end;
+
+  aspect-ratio: 4 / 5;
+
+  background: var(--background);
+
+  overflow: hidden;
+}
+
+.portrait img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+  object-position: center 42%;
+
+  filter:
+    saturate(0.82)
+    contrast(0.97);
+}
+
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+
+.contact-section {
+  display: grid;
+
+  grid-template-columns: 1.4fr auto;
+
+  gap: 60px;
+  align-items: end;
+}
+
+.contact-copy h2 {
+  max-width: 720px;
+
+  margin-top: 12px;
+
+  font-size: clamp(2rem, 3.8vw, 3.6rem);
+  font-weight: 400;
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+}
+
+.contact-links {
+  display: flex;
+  gap: 24px;
+}
+
+.contact-links a {
+  padding: 12px 18px;
+
+  border: 1px solid #b9a48f;
+
+  color: var(--accent-dark);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.contact-links a:hover {
+  background: var(--accent-dark);
+  color: var(--background);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+.site-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+
+  padding: 26px 0 42px;
+
+  border-top: 1px solid var(--rule);
+
+  color: var(--muted);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 720px;
+
+    padding: 64px 0;
+  }
+
+  .hero-visual {
+    display: none;
+  }
+
+
+  /* ---------- Projects ---------- */
+
+  .project-row {
+    grid-template-columns: 54px 1fr;
+  }
+
+  .project-visual {
+    grid-column: 2;
+
+    max-width: 500px;
+
+    margin-top: 8px;
+  }
+
+
+  /* ---------- Capabilities ---------- */
+
+  .capabilities-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .capability:nth-child(3) {
+    border-left: none;
+    border-top: 1px solid var(--rule);
+  }
+
+  .capability:nth-child(4) {
+    border-top: 1px solid var(--rule);
+  }
+
+
+  /* ---------- Background ---------- */
+
+  .background-section {
+    grid-template-columns: 1fr 0.45fr;
+
+    gap: 40px;
+  }
+
+  .background-heading {
+    grid-column: 1 / -1;
+  }
+
+  .background-copy {
+    grid-column: 1;
+  }
+
+  .portrait {
+    grid-column: 2;
+
+    max-width: 220px;
+  }
+
+
+  /* ---------- Contact ---------- */
+
+  .contact-section {
+    grid-template-columns: 1fr;
+
+    gap: 36px;
+  }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 640px) {
+
+  /* ---------- Layout ---------- */
+
+  .site-header,
+  main,
+  .site-footer {
+    width: min(calc(100% - 32px), var(--max-width));
+  }
+
+  /*
+   * Slightly tighter than desktop/tablet.
+   * Keeps the long one-column page moving without
+   * making the major sections feel compressed.
+   */
+
+  .section {
+    padding: 48px 0;
+  }
+
+
+/* ---------- Navigation ---------- */
+
+.nav-container {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+
+  padding-bottom: 18px;
+}
+
+.nav-links {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+  font-size: 0.61rem;
+  letter-spacing: 0.08em;
+}
+
+.nav-links a {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+
+  /* ---------- Hero ---------- */
+
+  .hero {
+    padding: 0;
+  }
+
+  .hero-content {
+    padding: 54px 0 64px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.35rem, 10.5vw, 3.25rem);
+    line-height: 0.98;
+  }
+
+
+  /* ---------- Projects ---------- */
+
+  .project-row {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+
+    padding: 32px 0;
+  }
+
+  .project-number,
+  .project-copy,
+  .project-visual {
+    grid-column: 1;
+  }
+
+  .project-number {
+    font-size: 2rem;
+  }
+
+  .project-visual {
+    margin-top: 10px;
+  }
+
+
+  /* ---------- Capabilities ---------- */
+
+  .capabilities-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .capability + .capability {
+    border-left: none;
+    border-top: 1px solid var(--rule);
+  }
+
+
+  /* ---------- Background ---------- */
+
+  /*
+   * Mobile reading order:
+   *
+   * 1. Section label + heading
+   * 2. Portrait
+   * 3. Background copy
+   *
+   * Desktop and tablet layouts are unaffected.
+   */
+
+  .background-section {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .background-heading,
+  .background-copy,
+  .portrait {
+    grid-column: 1;
+  }
+
+  .background-heading {
+    order: 1;
+  }
+
+  .portrait {
+    order: 2;
+
+    justify-self: start;
+
+    width: min(68%, 240px);
+
+    margin-top: 0;
+  }
+
+  .background-copy {
+    order: 3;
+  }
+
+
+  /* ---------- Contact ---------- */
+
+  .contact-links {
+    flex-wrap: wrap;
+  }
+
+
+  /* ---------- Footer ---------- */
+
+  .site-footer {
+    flex-direction: column;
+  }
+}
