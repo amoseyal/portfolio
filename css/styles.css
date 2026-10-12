@@ -591,6 +591,185 @@ main,
 }
 
 
+/* ============================================================
+   CERTIFICATIONS & CREDENTIALS
+   ============================================================ */
+
+/*
+ * Professional Certifications subsection heading.
+ *
+ * Provides consistent spacing and typography
+ * with the Professional Licenses subsection.
+ */
+
+.credentials-subsection-heading {
+  margin-top: 48px;
+}
+
+.credentials-subsection-heading > .section-label {
+  margin-bottom: 12px;
+}
+
+
+/*
+ * Two-column credential layout.
+ *
+ * Uses the same grid structure, borders, and spacing
+ * conventions as the Capabilities section.
+ */
+
+.certifications-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  margin-top: 34px;
+
+  border-top: 1px solid var(--rule);
+}
+
+/*
+ * Individual certification cards.
+ */
+
+.certification-card {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 240px;
+  padding: 26px 24px;
+}
+
+/*
+ * Separate adjacent cards with a subtle vertical rule.
+ */
+
+.certification-card + .certification-card {
+  border-left: 1px solid var(--rule);
+}
+
+/*
+ * Issuing organization and completion date.
+ */
+
+.certification-issuer {
+  margin-bottom: 28px;
+
+  color: var(--accent);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/*
+ * Certification title.
+ */
+
+.certification-card h3 {
+  margin-bottom: 14px;
+
+  font-size: 1.2rem;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+/*
+ * Certification subject areas.
+ */
+
+.certification-description {
+  margin-bottom: 24px;
+
+  color: var(--muted);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 0.82rem;
+  line-height: 1.75;
+}
+
+/*
+ * Credential verification link.
+ *
+ * Matches the existing project link styling.
+ */
+
+.certification-card a {
+  align-self: flex-start;
+
+  margin-top: auto;
+
+  color: var(--accent-dark);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.certification-card a:hover {
+  color: var(--text);
+}
+
+
+/* ============================================================
+   PROFESSIONAL LICENSES
+   ============================================================ */
+
+/*
+ * Separates professional licenses from the primary
+ * cybersecurity and data analytics certifications.
+ */
+
+.credentials-subsection {
+  margin-top: 48px;
+}
+
+/*
+ * Subsection heading.
+ */
+
+.credentials-subsection > .section-label {
+  margin-bottom: 12px;
+}
+
+/*
+ * Professional license number.
+ */
+
+.credential-number {
+  margin-top: auto;
+
+  color: var(--muted);
+
+  font-family:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+}
+
+
 /* =========================================================
    BACKGROUND
    ========================================================= */
@@ -938,6 +1117,31 @@ main,
     border-left: none;
     border-top: 1px solid var(--rule);
   }
+
+
+/* Certifications: mobile layout */
+
+.certifications-grid {
+  grid-template-columns: 1fr;
+}
+
+.certification-card {
+  min-height: auto;
+  padding: 26px 0;
+}
+
+.certification-card + .certification-card {
+  border-left: none;
+  border-top: 1px solid var(--rule);
+}
+
+.certification-issuer {
+  margin-bottom: 20px;
+}
+
+.certification-card a {
+  margin-top: 8px;
+}
 
 
   /* ---------- Background ---------- */
