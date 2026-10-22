@@ -728,6 +728,54 @@ main,
   color: var(--text);
 }
 
+/*
+ * ============================================================
+ * CREDENTIAL BADGES
+ * ============================================================
+ *
+ * Display official credential badges at a consistent size.
+ * Apply a subtle monochromatic tint that complements the
+ * website's neutral color palette.
+ *
+ * Restore original badge colors on hover or keyboard focus.
+ */
+
+.certification-card a.certification-badge-link {
+  display: block;
+  align-self: flex-start;
+
+  margin-top: 0;
+  margin-bottom: 24px;
+  padding: 0;
+
+  line-height: normal;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+.certification-card .certification-badge {
+  display: block;
+
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+
+  filter: grayscale(1) sepia(0.25) contrast(1.15);
+  opacity: 1;
+
+  transition:
+    filter 0.2s ease,
+    opacity 0.2s ease;
+}
+
+/* Restore official colors when interacting with a badge. */
+
+.certification-card a.certification-badge-link:hover .certification-badge,
+.certification-card a.certification-badge-link:focus-visible .certification-badge {
+  filter: none;
+  opacity: 1;
+}
+
 
 /* ============================================================
    PROFESSIONAL LICENSES
