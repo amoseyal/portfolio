@@ -742,6 +742,23 @@
         setNavOpen(false);
       }
     });
+    
+    // Change the header background when the page is scrolled
+    const siteHeader = document.querySelector('.site-header');
+
+    function updateHeaderOnScroll() {
+      const isScrolled = window.scrollY > 40;
+
+      siteHeader.classList.toggle('is-scrolled', isScrolled);
+    }
+
+    // Update the header as the user scrolls
+    window.addEventListener('scroll', updateHeaderOnScroll, {
+      passive: true
+    });
+
+    // Set the correct state when the page initially loads
+    updateHeaderOnScroll();
   </script>
 
 </body>
