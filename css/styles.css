@@ -66,7 +66,7 @@ img {
    SHARED LAYOUT
    ========================================================= */
 
-.site-header,
+/* Main content and footer */
 main,
 .site-footer {
   width: min(calc(100% - 48px), var(--max-width));
@@ -78,8 +78,11 @@ main,
  * Borders are applied only BETWEEN adjacent sections.
  */
 
+/* Anchor targets sit behind the sticky header's opaque background.
+   The section's own padding keeps its heading comfortably visible. */
 .section {
   padding: 72px 0;
+  scroll-margin-top: 65px;
 }
 
 .section + .section {
@@ -92,12 +95,40 @@ main,
    ========================================================= */
 
 .site-header {
-  position: relative;
-  z-index: 10;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 
+  width: 100%;
   padding: 28px 0 20px;
+  background: var(--background);
+}
 
-  background: transparent;
+/* Keep navigation aligned with the main content */
+.site-header .nav-container {
+  width: min(calc(100% - 48px), var(--max-width));
+  margin-inline: auto;
+}
+
+/* Subtle feathered transition below the header */
+.site-header::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+
+  top: 100%;
+  left: 0;
+
+  width: 100%;
+  height: 18px;
+
+  background: linear-gradient(
+    to bottom,
+    var(--background) 0%,
+    transparent 100%
+  );
+
+  pointer-events: none;
 }
 
 .nav-container {
@@ -1179,12 +1210,26 @@ main,
 
 @media (max-width: 640px) {
 
+
   /* ---------- Layout ---------- */
 
-  .site-header,
+  /* Main content and footer retain mobile margins */
   main,
   .site-footer {
     width: min(calc(100% - 32px), var(--max-width));
+  }
+
+  /* Header spans the entire viewport */
+  .site-header {
+    width: 100%;
+    margin-inline: 0;
+  }
+
+  /* Keep navigation aligned with main content */
+  .site-header .nav-container {
+    box-sizing: border-box;
+    width: min(calc(100% - 32px), var(--max-width));
+    margin-inline: auto;
   }
 
   /*
@@ -1195,6 +1240,7 @@ main,
 
   .section {
     padding: 48px 0;
+    scroll-margin-top: 75px;
   }
 
   /* ---------- Navigation ---------- */
@@ -1217,7 +1263,6 @@ main,
     font-size: clamp(2.35rem, 10.5vw, 3.25rem);
     line-height: 0.98;
   }
-
 
   /* ---------- Projects ---------- */
 
@@ -1334,5 +1379,15 @@ main,
 
   .site-footer {
     flex-direction: column;
+  }
+}
+/* Respect reduced-motion preferences for anchor navigation and menu transitions. */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .nav-toggle span {
+    transition: none;
   }
 }
