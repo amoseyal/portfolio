@@ -37,13 +37,26 @@
 <body>
 
   <!-- Navigation -->
-
   <header class="site-header">
-    <nav class="nav-container">
+    <nav class="nav-container" aria-label="Main navigation">
 
       <a href="#top" class="logo">AMOS EYAL</a>
 
-      <div class="nav-links">
+      <!-- Mobile navigation toggle -->
+      <button
+        class="nav-toggle"
+        type="button"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Navigation links -->
+      <div class="nav-links" id="primary-navigation">
         <a href="#projects">Projects</a>
         <a href="#capabilities">Capabilities</a>
         <a href="#certifications">Credentials</a>
@@ -53,7 +66,6 @@
 
     </nav>
   </header>
-
 
   <main id="top">
 
@@ -670,6 +682,68 @@
     </p>
 
   </footer>
+
+
+  <script>
+    // Mobile navigation elements
+    const navToggle = document.querySelector('.nav-toggle');
+    const navLinks = document.querySelector('.nav-links');
+
+    // Update the menu's open/closed state
+    function setNavOpen(isOpen) {
+      navLinks.classList.toggle('is-open', isOpen);
+
+      navToggle.setAttribute('aria-expanded', String(isOpen));
+
+      navToggle.setAttribute(
+        'aria-label',
+        isOpen ? 'Close navigation menu' : 'Open navigation menu'
+      );
+    }
+
+    // Toggle menu when hamburger button is clicked
+    navToggle.addEventListener('click', () => {
+      const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+      setNavOpen(!isOpen);
+    });
+
+    // Close menu when a navigation link is selected
+    navLinks.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+       setNavOpen(false);
+      });
+    });
+
+    // Close menu when clicking outside the navigation
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.nav-container')) {
+        setNavOpen(false);
+      }
+    });
+
+    // Close menu when pressing Escape
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        const wasOpen = navToggle.getAttribute('aria-expanded') === 'true';
+
+        setNavOpen(false);
+
+        if (wasOpen) {
+          navToggle.focus();
+        }
+      }
+    });
+
+   // Reset menu when returning to desktop layout
+    const desktopBreakpoint = window.matchMedia('(min-width: 901px)');
+
+    desktopBreakpoint.addEventListener('change', (event) => {
+      if (event.matches) {
+        setNavOpen(false);
+      }
+    });
+  </script>
+
 
 </body>
 

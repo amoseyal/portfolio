@@ -141,6 +141,11 @@ main,
   color: var(--accent-dark);
 }
 
+/* Hide the mobile menu toggle on desktop */
+.nav-toggle {
+  display: none;
+}
+
 
 /* =========================================================
    SHARED TYPOGRAPHIC LABELS
@@ -980,6 +985,112 @@ main,
 
 @media (max-width: 900px) {
 
+
+  /* ---------- Responsive Navigation ---------- */
+
+  .nav-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Mobile menu button */
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+
+    width: 44px;
+    height: 44px;
+    padding: 10px;
+
+    color: var(--text);
+    background: transparent;
+    border: none;
+
+    cursor: pointer;
+  }
+
+  /* Hamburger icon */
+  .nav-toggle span {
+    display: block;
+    width: 20px;
+    height: 2px;
+
+    background: currentColor;
+    border-radius: 2px;
+
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  /* Collapsed navigation */
+  .nav-links {
+    display: none;
+    position: static;
+
+    flex-basis: 100%;
+    flex-direction: column;
+    gap: 0;
+
+    padding: 0;
+    margin-top: 0;
+
+    background: var(--background);
+    border: none;
+    border-radius: 0;
+  }
+
+  /* Expanded navigation */
+  .nav-links.is-open {
+    display: flex;
+    margin-top: 20px;
+  }
+
+  /* Navigation links */
+  .nav-links a {
+    display: block;
+    padding: 12px 0;
+
+    color: var(--muted);
+    border: none;
+
+    transition: color 0.2s ease;
+}
+
+  /* Subtle separators */
+  .nav-links a + a {
+    border-top: 1px solid var(--rule);
+  }
+
+  /* Hover and keyboard focus */
+  .nav-links a:hover,
+  .nav-links a:focus-visible {
+    color: var(--accent-dark);
+  }
+
+  .nav-toggle:focus-visible {
+    outline: 2px solid var(--accent-dark);
+    outline-offset: 4px;
+    border-radius: 2px;
+  }
+
+  /* Animate hamburger into X */
+  .nav-toggle[aria-expanded="true"] span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+  }
+
+  .nav-toggle[aria-expanded="true"] span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .nav-toggle[aria-expanded="true"] span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+  }
+
+
   /* ---------- Hero ---------- */
 
   .hero {
@@ -1086,33 +1197,11 @@ main,
     padding: 48px 0;
   }
 
+  /* ---------- Navigation ---------- */
 
-/* ---------- Navigation ---------- */
-
-.nav-container {
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 18px;
-
-  padding-bottom: 18px;
-}
-
-.nav-links {
-  width: 100%;
-
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
-
-  font-size: 0.61rem;
-  letter-spacing: 0.08em;
-}
-
-.nav-links a {
-  display: inline-block;
-  white-space: nowrap;
-}
-
+  .nav-container {
+    padding-bottom: 18px;
+  }
 
   /* ---------- Hero ---------- */
 
