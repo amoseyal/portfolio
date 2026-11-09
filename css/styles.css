@@ -671,7 +671,7 @@ main,
 
 .certifications-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 
   margin-top: 34px;
 
@@ -748,6 +748,12 @@ main,
 
   font-size: 0.82rem;
   line-height: 1.75;
+}
+
+/* Align credential verification links across cards. */
+
+.certification-card > a:last-child {
+  margin-top: auto;
 }
 
 /*
